@@ -1,0 +1,106 @@
+'use client'
+
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'Parent of Mia (Age 4)',
+    content: 'Arudra\'s Preschool has been an incredible journey for my daughter. She\'s grown so confident and loves going to school every day!',
+    emoji: '👩‍👧',
+    color: '#FF6B9D',
+  },
+  {
+    name: 'Mike & Lisa Chen',
+    role: 'Parents of Ethan (Age 3)',
+    content: 'The teachers here are amazing! They truly care about each child\'s development. Our son has learned so much through play.',
+    emoji: '👨‍👩‍👦',
+    color: '#4ECDC4',
+  },
+  {
+    name: 'Priya Patel',
+    role: 'Parent of Aanya (Age 5)',
+    content: 'Best decision we ever made! The curriculum is perfect - it\'s fun, engaging, and prepares children wonderfully for kindergarten.',
+    emoji: '👩‍👧',
+    color: '#A78BFA',
+  },
+  {
+    name: 'Tom & Emily Davis',
+    role: 'Parents of Lily (Age 4)',
+    content: 'We love the creative approach to learning. The art projects, music classes, and outdoor activities keep our daughter excited every day!',
+    emoji: '👨‍👩‍👧',
+    color: '#FFB347',
+  },
+]
+
+export default function TestimonialCarousel() {
+  const [active, setActive] = useState(0)
+
+  const next = () => setActive((prev) => (prev + 1) % testimonials.length)
+  const prev = () => setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+
+  return (
+    <div className="relative max-w-3xl mx-auto">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="bg-white rounded-3xl p-8 md:p-12 shadow-soft border border-pink-100"
+        >
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+              className="w-20 h-20 rounded-full flex items-center justify-center text-3xl mb-6 shadow-lg"
+              style={{ background: `${testimonials[active].color}20` }}
+            >
+              {testimonials[active].emoji}
+            </motion.div>
+            <p className="text-gray-600 text-lg leading-relaxed mb-8 italic">
+              &ldquo;{testimonials[active].content}&rdquo;
+            </p>
+            <div>
+              <h4 className="font-semibold text-gray-800">{testimonials[active].name}</h4>
+              <p className="text-gray-400 text-sm">{testimonials[active].role}</p>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={prev}
+          className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-xl hover:shadow-lg transition-shadow"
+        >
+          ←
+        </motion.button>
+        <div className="flex gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                i === active ? 'w-8 gradient-primary' : 'bg-pink-200'
+              }`}
+            />
+          ))}
+        </div>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={next}
+          className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-xl hover:shadow-lg transition-shadow"
+        >
+          →
+        </motion.button>
+      </div>
+    </div>
+  )
+}
