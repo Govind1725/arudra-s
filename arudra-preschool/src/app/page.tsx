@@ -6,13 +6,14 @@ import AnimatedSection from '@/components/AnimatedSection'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import TestimonialCarousel from '@/components/TestimonialCarousel'
 import Card3D from '@/components/Card3D'
+import SecurityCard from '@/components/SecurityCard'
 
 const stars = [
-  { top: '10%', left: '5%', delay: 0 },
-  { top: '20%', left: '80%', delay: 0.5 },
-  { top: '50%', left: '10%', delay: 1 },
-  { top: '70%', left: '85%', delay: 1.5 },
-  { top: '85%', left: '20%', delay: 2 },
+  { top: '10%', left: '8%', delay: 0 },
+  { top: '18%', left: '78%', delay: 0.5 },
+  { top: '48%', left: '12%', delay: 1 },
+  { top: '68%', left: '82%', delay: 1.5 },
+  { top: '82%', left: '22%', delay: 2 },
 ]
 
 const programs = [
@@ -51,10 +52,10 @@ const programs = [
 ]
 
 const highlights = [
-  { emoji: '👩‍🏫', title: 'Certified Teachers', desc: 'Experienced and loving educators' },
-  { emoji: '🔒', title: 'Safe Environment', desc: '24/7 monitored, child-safe facility' },
-  { emoji: '📚', title: 'Smart Curriculum', desc: 'Play-based learning approach' },
-  { emoji: '🍎', title: 'Healthy Meals', desc: 'Nutritious home-cooked food' },
+  { emoji: '👩‍🏫', title: 'Certified Teachers', desc: 'Experienced and loving educators', color: '#FF6B9D', bg: '#FFE0EC' },
+  { emoji: '🔒', title: 'Safe Environment', desc: '24/7 monitored, child-safe facility', color: '#00C9B7', bg: '#D4FCF7' },
+  { emoji: '📚', title: 'Smart Curriculum', desc: 'Play-based learning approach', color: '#8B5CF6', bg: '#EDE9FE' },
+  { emoji: '🍎', title: 'Healthy Meals', desc: 'Nutritious home-cooked food', color: '#F97316', bg: '#FFEDD5' },
 ]
 
 export default function Home() {
@@ -101,7 +102,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-fun mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-fun mb-6 leading-tight break-words"
           >
             Welcome to{' '}
             <span className="gradient-text">Arudra&apos;s</span>
@@ -179,24 +180,62 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {highlights.map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
-                <Card3D>
-                  <motion.div
-                    className="p-6 text-center bg-white rounded-2xl shadow-soft border border-pink-50"
-                    whileHover={{ y: -5 }}
-                  >
-                    <motion.span
-                      className="text-4xl block mb-3"
-                      animate={{ scale: [1, 1.15, 1] }}
-                      transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
+                <motion.div
+                  className="px-6 pt-10 pb-8 text-center rounded-[28px] shadow-lg flex flex-col items-center"
+                  style={{ background: item.bg, border: `1px solid ${item.color}25` }}
+                  whileHover={{ y: -4, boxShadow: `0 20px 50px ${item.color}20` }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {/* Top ~33% — image placeholder */}
+                  <div className="flex justify-center mb-8">
+                    <div
+                      className="w-28 h-28 rounded-full flex items-center justify-center shadow-lg overflow-hidden"
+                      style={{
+                        background: `linear-gradient(135deg, ${item.color}20, ${item.color}08)`,
+                        border: `2px solid ${item.color}35`,
+                      }}
                     >
-                      {item.emoji}
-                    </motion.span>
-                    <h3 className="font-semibold text-gray-800 mb-1">{item.title}</h3>
-                    <p className="text-gray-400 text-sm">{item.desc}</p>
-                  </motion.div>
-                </Card3D>
+                      <div className="w-full h-full flex items-center justify-center" style={{ color: `${item.color}90` }}>
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Middle — heading */}
+                  <h3 className="font-semibold text-gray-800 text-base mb-3">{item.title}</h3>
+
+                  {/* Bottom — description */}
+                  <p className="text-gray-400 text-sm leading-relaxed max-w-[180px]">{item.desc}</p>
+                </motion.div>
               </AnimatedSection>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Security Section */}
+      <section className="relative py-20 px-4 bg-gradient-to-b from-gray-900/5 to-transparent">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            <div className="md:col-span-1">
+              <SecurityCard />
+            </div>
+            <div className="md:col-span-2">
+              <AnimatedSection direction="right">
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Safety First</span>
+                <h2 className="text-4xl md:text-5xl font-fun text-gray-800 mt-3 mb-4">
+                  Your Child&apos;s Safety Is Our{' '}
+                  <span className="gradient-text">Top Priority</span>
+                </h2>
+                <p className="text-gray-500 text-lg leading-relaxed max-w-xl">
+                  We maintain a secure, loving environment with round-the-clock monitoring,
+                  strict access control, and trained staff to ensure your child feels safe
+                  and protected at all times.
+                </p>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
