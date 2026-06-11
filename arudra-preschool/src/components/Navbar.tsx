@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -37,18 +38,21 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-2 group">
             <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
-              className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-2xl shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="relative"
             >
-              ⭐
+              <Image
+                src="/images/logo-main.png"
+                alt="Arudra's Pre-School Logo"
+                width={160}
+                height={70}
+                className="h-14 w-auto object-contain"
+                priority
+              />
             </motion.div>
-            <div>
-              <span className="font-fun text-2xl gradient-text">Arudra&apos;s</span>
-              <span className="block text-xs text-gray-500 -mt-1">Little Stars Preschool</span>
-            </div>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
@@ -67,15 +71,6 @@ export default function Navbar() {
                 </motion.span>
               </Link>
             ))}
-            <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ml-4 px-6 py-2.5 rounded-full gradient-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-all"
-              >
-                Enroll Now 🎒
-              </motion.button>
-            </Link>
           </div>
 
           <button
@@ -123,14 +118,6 @@ export default function Navbar() {
                   </motion.div>
                 </Link>
               ))}
-              <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full px-6 py-3 rounded-xl gradient-secondary text-white font-semibold"
-                >
-                  Enroll Now 🎒
-                </motion.button>
-              </Link>
             </div>
           </motion.div>
         )}
