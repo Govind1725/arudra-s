@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function Footer() {
@@ -36,14 +37,14 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-2xl shadow-lg">
-                ⭐
-              </div>
-              <div>
-                <span className="font-fun text-2xl gradient-text">Arudra&apos;s</span>
-                <span className="block text-xs text-gray-500">Little Stars Preschool</span>
-              </div>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/images/logo-main.png"
+                alt="Arudra's Pre-School Logo"
+                width={160}
+                height={70}
+                className="h-14 w-auto object-contain"
+              />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
               Where imaginations soar, friendships bloom, and every child discovers the joy of learning!

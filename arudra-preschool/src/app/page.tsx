@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import AnimatedSection from '@/components/AnimatedSection'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import TestimonialCarousel from '@/components/TestimonialCarousel'
@@ -87,42 +86,15 @@ export default function Home() {
         ))}
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          {/* Main Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
-            className="mb-4 flex justify-center"
+            className="mb-6"
           >
-            <Image
-              src="/images/logo-main.png"
-              alt="Arudra's Pre-School"
-              width={520}
-              height={220}
-              className="w-full max-w-[420px] sm:max-w-[520px] h-auto object-contain drop-shadow-xl"
-              priority
-            />
-          </motion.div>
-
-          {/* Badge Logo */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mb-6 flex justify-center"
-          >
-            <motion.div
-              animate={{ rotate: [0, 3, -3, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <Image
-                src="/images/logo-badge.png"
-                alt="Arudra's Pre-School Badge - Learn Play Grow"
-                width={130}
-                height={130}
-                className="w-24 h-24 sm:w-32 sm:h-32 object-contain drop-shadow-lg"
-              />
-            </motion.div>
+            <span className="inline-block px-6 py-2 rounded-full bg-white/80 backdrop-blur-sm text-primary font-medium text-sm shadow-lg mb-6">
+              🌟 Where Little Stars Shine Bright!
+            </span>
           </motion.div>
 
           <motion.h1
