@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd arudra-preschool && npm install && npm run build",
+  "outputDirectory": "arudra-preschool/.next",
+  "installCommand": "cd arudra-preschool && npm install",
+  "framework": "nextjs"
+}
