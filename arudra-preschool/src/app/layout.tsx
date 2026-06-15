@@ -44,6 +44,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Arudra's Preschool" }],
   creator: "Arudra's Preschool",
+  icons: {
+    icon: '/images/logo-badge.png',
+    apple: '/images/logo-badge.png',
+  },
   robots: {
     index: true,
     follow: true,

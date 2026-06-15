@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
@@ -41,15 +41,20 @@ export default function TestimonialCarousel() {
   const next = () => setActive((prev) => (prev + 1) % testimonials.length)
   const prev = () => setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length)
 
+  useEffect(() => {
+    const timer = setInterval(next, 4000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <div className="relative max-w-3xl mx-auto">
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
-          initial={{ opacity: 0, x: 100 }}
+          initial={{ opacity: 0, x: 120 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          exit={{ opacity: 0, x: -120 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
           className="rounded-3xl p-8 md:p-12 shadow-soft relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${testimonials[active].color}18, ${testimonials[active].color}08)`, border: `1px solid ${testimonials[active].color}30` }}
         >
