@@ -1,0 +1,14 @@
+{
+  "app\\page.tsx -> @/components/SecurityCard": {
+    "id": "app\\page.tsx -> @/components/SecurityCard",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_SecurityCard_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> @/components/TestimonialCarousel": {
+    "id": "app\\page.tsx -> @/components/TestimonialCarousel",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_TestimonialCarousel_tsx.js"
+    ]
+  }
+}
