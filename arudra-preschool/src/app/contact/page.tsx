@@ -53,7 +53,7 @@ export default function Contact() {
               <AnimatedSection key={i} delay={i * 0.1}>
                 <Card3D>
                   <motion.div
-                    className="p-6 bg-white rounded-2xl shadow-soft border border-pink-50 text-center"
+                    className={`p-6 rounded-2xl shadow-soft border border-pink-50 text-center ${['container-bloom', 'container-fresh', 'container-breeze', 'container-sunny'][i]}`}
                     whileHover={{ y: -5 }}
                   >
                     <motion.span
@@ -75,7 +75,7 @@ export default function Contact() {
               <Card3D>
                 <form
                   onSubmit={handleSubmit}
-                  className="p-8 bg-white rounded-2xl shadow-soft border border-pink-50 space-y-5"
+                  className="p-8 container-breeze rounded-2xl shadow-soft border border-pink-50 space-y-5"
                 >
                   <h2 className="text-2xl font-fun text-gray-800 mb-2">Send us a Message</h2>
                   <p className="text-gray-400 text-sm mb-6">
@@ -141,7 +141,7 @@ export default function Contact() {
             <AnimatedSection direction="right">
               <div className="space-y-6">
                 <Card3D>
-                  <div className="p-8 bg-white rounded-2xl shadow-soft border border-pink-50">
+                  <div className="p-8 container-lavender rounded-2xl shadow-soft border border-pink-50">
                     <h2 className="text-2xl font-fun text-gray-800 mb-6">
                       Frequently Asked{' '}
                       <span className="gradient-text">Questions</span>

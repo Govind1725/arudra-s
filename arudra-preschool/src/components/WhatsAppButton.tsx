@@ -20,6 +20,7 @@ export default function WhatsAppButton() {
   return (
     <motion.button
       onClick={openWhatsApp}
+      aria-label="Chat on WhatsApp"
       className="fixed bottom-8 left-8 z-50 w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:shadow-xl flex items-center justify-center group"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}

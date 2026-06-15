@@ -62,7 +62,7 @@ export default function GalleryGrid() {
               <Card3D>
                 <div
                   className="relative p-8 rounded-2xl text-center cursor-pointer overflow-hidden group"
-                  style={{ background: `${item.color}15` }}
+                  style={{ background: `${item.color}22` }}
                 >
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"

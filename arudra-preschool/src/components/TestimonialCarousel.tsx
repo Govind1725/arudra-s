@@ -2,34 +2,35 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 const testimonials = [
   {
     name: 'Sarah Johnson',
     role: 'Parent of Mia (Age 4)',
     content: 'Arudra\'s Preschool has been an incredible journey for my daughter. She\'s grown so confident and loves going to school every day!',
-    emoji: '👩‍👧',
+    image: '/images/testimonial-sarah.png',
     color: '#FF6B9D',
   },
   {
     name: 'Mike & Lisa Chen',
     role: 'Parents of Ethan (Age 3)',
     content: 'The teachers here are amazing! They truly care about each child\'s development. Our son has learned so much through play.',
-    emoji: '👨‍👩‍👦',
+    image: '/images/testimonial-mike-lisa.png',
     color: '#4ECDC4',
   },
   {
     name: 'Priya Patel',
     role: 'Parent of Aanya (Age 5)',
     content: 'Best decision we ever made! The curriculum is perfect - it\'s fun, engaging, and prepares children wonderfully for kindergarten.',
-    emoji: '👩‍👧',
+    image: '/images/testimonial-priya.png',
     color: '#A78BFA',
   },
   {
     name: 'Tom & Emily Davis',
     role: 'Parents of Lily (Age 4)',
     content: 'We love the creative approach to learning. The art projects, music classes, and outdoor activities keep our daughter excited every day!',
-    emoji: '👨‍👩‍👧',
+    image: '/images/testimonial-tom-emily.png',
     color: '#FFB347',
   },
 ]
@@ -49,17 +50,24 @@ export default function TestimonialCarousel() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="bg-white rounded-3xl p-8 md:p-12 shadow-soft border border-pink-100"
+          className="rounded-3xl p-8 md:p-12 shadow-soft relative overflow-hidden"
+          style={{ background: `linear-gradient(135deg, ${testimonials[active].color}18, ${testimonials[active].color}08)`, border: `1px solid ${testimonials[active].color}30` }}
         >
           <div className="flex flex-col items-center text-center">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-              className="w-20 h-20 rounded-full flex items-center justify-center text-3xl mb-6 shadow-lg"
-              style={{ background: `${testimonials[active].color}20` }}
+              className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg overflow-hidden relative"
+              style={{ border: `3px solid ${testimonials[active].color}35` }}
             >
-              {testimonials[active].emoji}
+              <Image
+                src={testimonials[active].image}
+                alt={testimonials[active].name}
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
             </motion.div>
             <p className="text-gray-600 text-lg leading-relaxed mb-8 italic">
               &ldquo;{testimonials[active].content}&rdquo;

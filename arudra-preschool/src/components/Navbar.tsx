@@ -75,6 +75,8 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle mobile menu"
+            aria-expanded={mobileOpen}
             className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-pink-50"
           >
             <div className="w-5 flex flex-col gap-1.5">

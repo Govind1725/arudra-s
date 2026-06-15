@@ -106,7 +106,7 @@ export default function Programs() {
                 <Card3D>
                   <div
                     className="p-8 md:p-12 rounded-2xl relative overflow-hidden"
-                    style={{ background: `${program.color}08` }}
+                    style={{ background: `${program.color}15` }}
                   >
                     <div
                       className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-5"
@@ -177,7 +177,7 @@ export default function Programs() {
             {scheduleGrid.map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.03}>
                 <motion.div
-                  className="p-4 bg-white rounded-xl shadow-sm border border-pink-50 flex items-center gap-4"
+                    className={`p-4 rounded-xl shadow-sm border border-pink-50 flex items-center gap-4 ${['container-bloom', 'container-fresh', 'container-breeze', 'container-sunny', 'container-lavender', 'container-peach', 'container-bloom', 'container-fresh', 'container-breeze'][i]}`}
                   whileHover={{ x: 5, borderColor: '#FF6B9D' }}
                 >
                   <span className="text-2xl">{item.emoji}</span>

@@ -102,7 +102,7 @@ export default function About() {
               <AnimatedSection key={i} delay={i * 0.05}>
                 <Card3D>
                   <motion.div
-                    className="p-8 bg-white rounded-2xl shadow-soft border border-pink-50 text-center"
+                    className={`p-8 rounded-2xl shadow-soft border border-pink-50 text-center ${['container-bloom', 'container-fresh', 'container-breeze', 'container-sunny', 'container-lavender', 'container-peach'][i]}`}
                     whileHover={{ y: -5 }}
                   >
                     <motion.span
@@ -137,7 +137,7 @@ export default function About() {
               <AnimatedSection key={i} delay={i * 0.1}>
                 <Card3D>
                   <motion.div
-                    className="p-8 rounded-2xl text-center bg-white shadow-soft border border-pink-50"
+                    className={`p-8 rounded-2xl text-center shadow-soft border border-pink-50 ${['container-peach', 'container-breeze', 'container-lavender', 'container-sunny'][i]}`}
                     whileHover={{ y: -5 }}
                   >
                     <div

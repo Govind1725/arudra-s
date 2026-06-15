@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import LoaderOverlay from '@/components/LoaderOverlay'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -17,7 +18,7 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
 
   return (
-    <>
+    <LoaderOverlay>
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
@@ -32,6 +33,6 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       </AnimatePresence>
       <Footer />
       <WhatsAppButton />
-    </>
+    </LoaderOverlay>
   )
 }
